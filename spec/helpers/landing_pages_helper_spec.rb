@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe LandingPagesHelper, type: :helper do
+
   describe '#suit_symbol' do
     subject { helper.suit_symbol(suit) }
 
@@ -31,10 +32,10 @@ RSpec.describe LandingPagesHelper, type: :helper do
     context 'given spades' do
       let(:suit) { :spades }
 
-
       it 'given spades suit' do
         expect(subject).to eq '♠'
       end
     end
   end
+
 end

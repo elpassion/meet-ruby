@@ -1,3 +1,5 @@
 <ul class="cards">
   <%= render collection: @game_session.cards, partial: 'shared/card' %>
 </ul>
+
+<%= link_to 'Hit', @game_session, method: :patch %>

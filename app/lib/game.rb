@@ -1,20 +1,26 @@
-class Game < Struct.new(:game_session)
-  CARD_VALUES = %w(2 3 4 5 6 7 8 9 10 J Q K A)
-  CARD_SUITS  = %i(clubs diamonds hearts spades)
+class Game
+  delegate :bust?, :black_jack?, to: :calculator
+
+  def initialize(game_session, deck = RandomDeck.new)
+    @game_session = game_session
+    @deck         = deck
+  end
 
   def start!
-    game_session.cards += Array.new(2) { random_card }
+    game_session.cards += Array.new(2) { deck.draw }
     game_session.save
   end
 
   def hit!
-    game_session.cards << random_card
+    game_session.cards << deck.draw
     game_session.save
   end
 
   private
 
-  def random_card
-    Card.new(CARD_VALUES.sample, CARD_SUITS.sample)
+  attr_reader :game_session, :deck
+
+  def calculator
+    BlackJackCalculator.new.tap { |c| c.add_cards *game_session.cards.map(&:value) }
   end
 end

@@ -1,8 +1,7 @@
 <h1>Black Jack</h1>
 
 <ul class="cards">
-  <%= render partial: 'card', locals: { value: 'J', suit: :clubs } %>
-  <%= render partial: 'card', locals: { value: 'Q', suit: :diamonds } %>
-  <%= render partial: 'card', locals: { value: 'K', suit: :hearts } %>
-  <%= render partial: 'card', locals: { value: 'A', suit: :spades } %>
+  <%= render collection: @sample_cards, partial: 'shared/card' %>
 </ul>
+
+<%= link_to 'Start New Game', '/game_sessions', method: :post %>

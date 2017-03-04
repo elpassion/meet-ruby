@@ -1,15 +1,40 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the LandingPagesHelper. For example:
-#
-# describe LandingPagesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe LandingPagesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#suit_symbol' do
+    subject { helper.suit_symbol(suit) }
+
+    context 'given hearts' do
+      let(:suit) { :hearts }
+
+      it 'given hearts suit' do
+        expect(subject).to eq '♥'
+      end
+    end
+
+    context 'given diamonds' do
+      let(:suit) { :diamonds }
+
+      it 'given diamonds suit' do
+        expect(subject).to eq '♦'
+      end
+    end
+
+    context 'given clubs' do
+      let(:suit) { :clubs }
+
+      it 'given clubs suit' do
+        expect(subject).to eq '♣'
+      end
+    end
+
+    context 'given spades' do
+      let(:suit) { :spades }
+
+
+      it 'given spades suit' do
+        expect(subject).to eq '♠'
+      end
+    end
+  end
 end

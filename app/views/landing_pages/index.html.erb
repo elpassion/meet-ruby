@@ -4,4 +4,4 @@
   <%= render collection: @sample_cards, partial: 'shared/card' %>
 </ul>
 
-<%= link_to 'Start New Game', '/game_sessions', method: :post %>
+<%= link_to 'Start New Game', game_sessions_path, method: :post %>
